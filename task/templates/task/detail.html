@@ -1,0 +1,36 @@
+<table >
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Doers</th>
+            <th>Watchers</th>
+            <th>Status</th>
+            <th>Begin_date</th>
+            <th>End_date</th>
+            <th>Planned_end_date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>
+            {% for doer in task.doers.all %}
+                {{ doer.username }},
+            {% endfor %}
+        </td>
+        <td>
+            {% for watcher in task.watchers.all %}
+                {{ watcher.username }},
+            {% endfor %}
+        </td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.begin_date }}</td>
+        <td>{{ task.end_date }}</td>
+        <td>{{ task.planned_end_date }}</td>
+        <td><a href="edit">Edit</a></td>
+        <td><a href="delete">Delete</a></td>
+        </tr>
+    </tbody>
+</table>

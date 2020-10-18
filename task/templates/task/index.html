@@ -1,0 +1,40 @@
+<a href="/tasks/new_task">add task</a>
+
+<table >
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Doers</th>
+            <th>Watchers</th>
+            <th>Status</th>
+            <th>Begin_date</th>
+            <th>End_date</th>
+            <th>Planned_end_date</th>
+            <th>Created by</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in all_tasks %}
+        <tr>
+            <td><a href='{{ row.id }}'>{{ row.title }}</a></td>
+            <td>{{ row.description }}</td>
+            <td>
+                {% for doer in row.doers.all %}
+                    {{ doer.username }},
+                {% endfor %}
+            </td>
+            <td>
+                {% for watcher in row.watchers.all %}
+                    {{ watcher.username }},
+                {% endfor %}
+            </td>
+            <td>{{ row.status }}</td>
+            <td>{{ row.begin_date }}</td>
+            <td>{{ row.end_date }}</td>
+            <td>{{ row.planned_end_date }}</td>
+            <td>{{ row.created_by }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
